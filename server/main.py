@@ -9,7 +9,7 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=['http://localhost:3000'],
+    allow_origins=['http://localhost:5173'],
     allow_methods=['*'],
     allow_headers=['*']
 )
@@ -70,7 +70,7 @@ async def create(request: Request):
                         ['budget'], notes=body['data']['notes']).save()
 
     event = Event(delivery_id=delivery.pk,
-                        type=body['type'], data=json.dumps(body['data'])).save()
+                  type=body['type'], data=json.dumps(body['data'])).save()
 
     state = consumers.CONSUMERS[event.type]({}, event)
     redis.set(f'delivery:{delivery.pk}', json.dumps(state))
