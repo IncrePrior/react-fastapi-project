@@ -9,3 +9,9 @@ def create_delivery(state, event):
         "notes": data["notes"],
         "status": "ready"
     }
+
+
+def start_delivery(state, event):
+    return state | {
+        "status": "active"
+    }
