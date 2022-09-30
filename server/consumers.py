@@ -5,7 +5,7 @@ def create_delivery(state, event):
     data = json.loads(event.data)
     return {
         "id": event.delivery_id,
-        "bugdet": int(data['budget']),
+        "budget": int(data["budget"]),
         "notes": data["notes"],
         "status": "ready"
     }
