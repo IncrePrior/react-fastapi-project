@@ -3,6 +3,7 @@ from fastapi import FastAPI, Request, Response
 from fastapi.middleware.cors import CORSMiddleware
 from redis_om import get_redis_connection, HashModel
 from secret import password
+import consumers
 
 app = FastAPI()
 
@@ -47,4 +48,5 @@ async def create(request: Request):
     event = Event(delivery_id=delivery.pk,
                   type=body['type'], data=json.dumps(body['data'])).save()
 
-    return event
+    state = consumers.create_delivery({}, event)
+    return state
