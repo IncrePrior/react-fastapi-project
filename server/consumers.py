@@ -1,3 +1,4 @@
+from fastapi import HTTPException
 import json
 
 
@@ -12,6 +13,9 @@ def create_delivery(state, event):
 
 
 def start_delivery(state, event):
+    if state['status'] != 'ready':
+        raise HTTPException(status_code=400, detail="Delivery already started")
+
     return state | {
         "status": "active"
     }
