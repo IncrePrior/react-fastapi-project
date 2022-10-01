@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-.progress {
+.progress-bar {
   background-image: linear-gradient(
     45deg,
     rgba(255, 255, 255, 0.15) 25%,
@@ -14,5 +14,8 @@
     transparent
   );
   background-size: 1rem 1rem;
-  animation: progress 1s linear infinite;
+  animation: 1000ms linear 0ms infinite normal none running progress;
+}
+
+@keyframes progress {
 }

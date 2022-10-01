@@ -13,7 +13,13 @@ const Delivery = () => {
       <h1 className="text-3xl font-bold dark:text-white">
         Delivery {state.id}
       </h1>
-      {state.status != 'ready' ? <div className='h-4 bg-green-600 progress rounded-sm'></div> : ''}
+      <div className="w-32 mx-auto rounded-sm overflow-hidden">
+        {state.status != 'ready' ? (
+          <div className=" h-4 bg-green-600 progress-bar rounded-sm"></div>
+        ) : (
+          ''
+        )}
+      </div>
     </div>
   )
 }
