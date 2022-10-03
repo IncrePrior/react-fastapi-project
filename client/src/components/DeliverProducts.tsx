@@ -8,7 +8,7 @@ const DeliverProducts: React.FC<IDeliverProducts> = ({ submit }) => {
       onSubmit={(e) => submit(e, 'DELIVER_PRODUCTS')}
       className="h-fit flex flex-col items-center py-7 px-5 gap-3 rounded bg-white dark:bg-slate-100 shadow-lg"
     >
-      <h1 className="text-2xl font-bold mb-2">Pickup Products</h1>
+      <h1 className="text-2xl font-bold mb-2">Deliver Products</h1>
       <input
         type="number"
         name="sell_price"
