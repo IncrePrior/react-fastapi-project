@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import BackHome from './BackHome'
+import StartDelivery from './StartDelivery'
 
 interface IDeliveryProps {
   status: string
@@ -49,9 +50,7 @@ const Delivery: React.FC<IDeliveryProps> = (props) => {
 
   return (
     <div className="w-screen p-10">
-      {state.status === 'completed' && (
-        <BackHome reload={reloadPage} />
-      )}
+      {state.status === 'completed' && <BackHome reload={reloadPage} />}
       <h1 className="text-3xl font-bold dark:text-white mb-10 text-center">
         Delivery {state.id}
       </h1>
@@ -81,15 +80,7 @@ const Delivery: React.FC<IDeliveryProps> = (props) => {
       </div>
       <div className="grid grid-cols-4 gap-5 mb-10">
         {/* Start Delivery Event */}
-        <form
-          onSubmit={(e) => handleSubmit(e, 'START_DELIVERY')}
-          className="h-fit flex flex-col items-center py-7 px-5 gap-3 rounded bg-white dark:bg-slate-100 shadow-lg"
-        >
-          <h1 className="text-2xl font-bold mb-2">Start Delivery</h1>
-          <button className="bg-emerald-500 text-white py-2 px-4 rounded shadow cursor-pointer transition duration-150 hover:brightness-90 hover:shadow-md active:brightness-75">
-            Submit
-          </button>
-        </form>
+        <StartDelivery submit={handleSubmit} />
 
         {/* Increase Budget Event */}
         <form
