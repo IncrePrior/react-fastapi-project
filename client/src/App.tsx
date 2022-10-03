@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import CreateDelivery from './components/CreateDelivery'
 import Delivery from './components/Delivery'
 
 const App = () => {
-  const [id, setId] = useState('01GE7DKW4TBNQRRSS4SF93C4Y0')
+  const [id, setId] = useState('')
 
   const handleSubmit = async (e: any) => {
     e.preventDefault()
@@ -23,7 +23,11 @@ const App = () => {
 
   return (
     <div className="h-screen w-screen grid items-center justify-center bg-slate-100 dark:bg-slate-800">
-      {id === '' ? <CreateDelivery submit={handleSubmit} /> : <Delivery />}
+      {id === '' ? (
+        <CreateDelivery submit={handleSubmit} />
+      ) : (
+        <Delivery id={id} status={''} />
+      )}
     </div>
   )
 }

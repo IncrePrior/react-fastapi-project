@@ -5,6 +5,8 @@ from redis_om import get_redis_connection, HashModel
 from secret import password
 import consumers
 
+# python -m uvicorn main:app --reload
+
 app = FastAPI()
 
 app.add_middleware(
