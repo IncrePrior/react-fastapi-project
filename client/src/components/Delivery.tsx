@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import BackHome from './BackHome'
 
 interface IDeliveryProps {
   status: string
@@ -49,12 +50,7 @@ const Delivery: React.FC<IDeliveryProps> = (props) => {
   return (
     <div className="w-screen p-10">
       {state.status === 'completed' && (
-        <div className="w-fit h-fit flex flex-col items-center mx-auto mb-3 py-7 px-5 gap-3 rounded bg-white dark:bg-slate-100 shadow-lg">
-          <h1 className="text-2xl font-bold mb-2">Back to home</h1>
-          <button onClick={reloadPage} className="bg-emerald-500 text-white py-2 px-4 rounded shadow cursor-pointer transition duration-150 hover:brightness-90 hover:shadow-md active:brightness-75">
-            Go
-          </button>
-        </div>
+        <BackHome reload={reloadPage} />
       )}
       <h1 className="text-3xl font-bold dark:text-white mb-10 text-center">
         Delivery {state.id}
