@@ -8,7 +8,7 @@ from redis_om import get_redis_connection, HashModel
 import dotenv
 dotenv.load_dotenv(dotenv.find_dotenv())
 
-# python -m uvicorn main:app --reload
+# uvicorn main:app --reload
 
 app = FastAPI()
 
