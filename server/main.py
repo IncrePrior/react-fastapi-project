@@ -1,9 +1,12 @@
 import json
+import consumers
+import os
 from fastapi import FastAPI, Request, Response
 from fastapi.middleware.cors import CORSMiddleware
 from redis_om import get_redis_connection, HashModel
-from secret import UVICORN_SECRET
-import consumers
+
+import dotenv
+dotenv.load_dotenv(dotenv.find_dotenv())
 
 # python -m uvicorn main:app --reload
 
@@ -20,7 +23,7 @@ app.add_middleware(
 redis = get_redis_connection(
     host='redis-12804.c57.us-east-1-4.ec2.cloud.redislabs.com',
     port=12804,
-    password=UVICORN_SECRET,
+    password=os.getenv("UVICORN_SECRET"),
     decode_responses=True
 )
 
