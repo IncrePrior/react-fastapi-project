@@ -17,7 +17,7 @@ const Delivery: React.FC<IDeliveryProps> = (props) => {
   useEffect(() => {
     ;(async () => {
       const response = await fetch(
-        `https://event-driven-server.herokuapp.com/deliveries/${props.id}/status`
+        `http://127.0.0.1:8000/deliveries/${props.id}/status`
       )
       const data = await response.json()
       setState(data)
@@ -32,9 +32,11 @@ const Delivery: React.FC<IDeliveryProps> = (props) => {
     e.preventDefault()
     const form = new FormData(e.target)
     const data = Object.fromEntries(form.entries())
-    const response = await fetch('https://event-driven-server.herokuapp.com/event', {
+    const response = await fetch(`http://127.0.0.1:8000/event`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+      },
       body: JSON.stringify({
         type,
         data,

@@ -1,8 +1,8 @@
-interface IStartDelivery {
+interface IIncreaseBudget {
   submit: (e: any, type: string) => void
 }
 
-const IncreaseBudget: React.FC<IStartDelivery> = ({ submit }) => {
+const IncreaseBudget: React.FC<IIncreaseBudget> = ({ submit }) => {
   return (
     <form
       onSubmit={(e) => submit(e, 'INCREASE_BUDGET')}

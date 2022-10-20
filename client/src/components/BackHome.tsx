@@ -5,7 +5,9 @@ interface IBackHomeProps {
 const BackHome: React.FC<IBackHomeProps> = ({ reload }) => {
   return (
     <>
-      <h1 className="text-3xl font-bold mb-5 text-center dark:text-white">Delivery Completed</h1>
+      <h1 className="text-3xl font-bold mb-5 text-center dark:text-white">
+        Delivery Completed
+      </h1>
       <div className="w-fit h-fit flex flex-col items-center mx-auto mb-3 py-7 px-5 gap-3 rounded bg-white dark:bg-slate-100 shadow-lg">
         <h1 className="text-2xl font-bold mb-2">Back to home</h1>
         <button

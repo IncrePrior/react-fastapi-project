@@ -9,17 +9,16 @@ const App = () => {
     e.preventDefault()
     const form = new FormData(e.target)
     const data = Object.fromEntries(form.entries())
-    const response = await fetch(
-      'https://event-driven-server.herokuapp.com/deliveries/create',
-      {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          type: 'CREATE_DELIVERY',
-          data,
-        }),
-      }
-    )
+    const response = await fetch(`http://127.0.0.1:8000/deliveries/create`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        type: 'CREATE_DELIVERY',
+        data,
+      }),
+    })
     const { id } = await response.json()
     setId(id)
   }

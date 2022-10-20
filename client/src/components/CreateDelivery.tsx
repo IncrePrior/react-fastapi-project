@@ -2,7 +2,7 @@ interface ICreateDeliveryProps {
   submit: (e: any) => void
 }
 
-const CreateDelivery: React.FC<ICreateDeliveryProps> = ({submit}) => {
+const CreateDelivery: React.FC<ICreateDeliveryProps> = ({ submit }) => {
   return (
     <form
       className="flex flex-col items-center py-7 px-5 gap-3 rounded bg-white dark:bg-slate-100 shadow-lg"
