@@ -14,10 +14,10 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=['http://localhost:5173',
-                   'https://react-fastapi.vercel.app'],
+    allow_origins=['*'],
+    allow_headers=['*'],
     allow_methods=['*'],
-    allow_headers=['*']
+    allow_credentials=True
 )
 
 redis = get_redis_connection(
@@ -37,7 +37,7 @@ class Delivery(HashModel):
 
 
 class Event(HashModel):
-    delivery_id: str = None
+    delivery_id: str = None  # type: ignore
     type: str
     data: str
 
@@ -60,11 +60,12 @@ async def get_state(pk: str):
 def build_state(pk: str):
     pks = Event.all_pks()
     all_events = [Event.get(pk) for pk in pks]
+    # type: ignore
     events = [event for event in all_events if event.delivery_id == pk]
     state = {}
 
     for event in events:
-        state = consumers.CONSUMERS[event.type](state, event)
+        state = consumers.CONSUMERS[event.type](state, event)  # type: ignore
 
     return state
 
@@ -78,7 +79,7 @@ async def create(request: Request):
     event = Event(delivery_id=delivery.pk,
                   type=body['type'], data=json.dumps(body['data'])).save()
 
-    state = consumers.CONSUMERS[event.type]({}, event)
+    state = consumers.CONSUMERS[event.type]({}, event)  # type: ignore
     redis.set(f'delivery:{delivery.pk}', json.dumps(state))
 
     return state
@@ -93,7 +94,7 @@ async def dispatch(request: Request):
                   type=body['type'], data=json.dumps(body['data'])).save()
 
     state = await get_state(delivery_id)
-    new_state = consumers.CONSUMERS[event.type](state, event)
+    new_state = consumers.CONSUMERS[event.type](state, event)  # type: ignore
     redis.set(f'delivery:{delivery_id}', json.dumps(new_state))
 
     return new_state

@@ -42,7 +42,7 @@ def deliver_products(state, event):
     new_budget = state["budget"] + \
         int(data['sell_price']) * int(data['quantity'])
     new_quantity = state['quantity'] - int(data['quantity'])
-    
+
     if new_quantity < 0:
         raise HTTPException(status_code=400, detail="Not enough quantity")
 
