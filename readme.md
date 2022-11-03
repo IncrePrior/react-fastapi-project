@@ -9,7 +9,7 @@ and use the following technologies:
 The client side is built with ReactJS, TypeScript and TailwindCSS.
 
 ##### Back-end:
-The server side is built with FastAPI (RestAPI) and Redis (database).
+The server side is built with FastAPI and Redis.
 
 
 In this notes, you will read the client side experience.
