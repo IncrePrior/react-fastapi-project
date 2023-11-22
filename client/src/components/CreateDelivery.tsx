@@ -13,7 +13,7 @@ const CreateDelivery: React.FC<ICreateDeliveryProps> = ({ submit }) => {
         type="number"
         name="budget"
         placeholder="Budget"
-        className="w-56 p-2 shadow rounded border-2 dark:border-0 outline-none transition duration-150 focus:shadow-md"
+        className="w-56 p-2 rounded border-2 dark:border-0 outline-none transition duration-150 focus:shadow-md shadow"
       />
       <textarea
         name="notes"
